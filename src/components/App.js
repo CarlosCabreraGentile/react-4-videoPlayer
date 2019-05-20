@@ -11,6 +11,10 @@ class App extends React.Component {
         selectedVideo: null
     };
 
+    componentDidMount() {
+        this.onTermSubmit('building');
+    }
+
     onTermSubmit = async (term) => {
         console.log(term);
         //Axios function
@@ -19,7 +23,11 @@ class App extends React.Component {
                 q: term
             }
         });
-        this.setState({ videos: response.data.items });
+        this.setState({
+            videos: response.data.items,
+            //Set first video of the list as default
+            selectedVideo: response.data.items[0]
+        });
     };
 
     onVideoSelect = (video) => {
