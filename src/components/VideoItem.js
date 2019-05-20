@@ -1,11 +1,12 @@
 import React from 'react';
 import './VideoItem.css'
 
-const VideoItem = ({ video }) => {
+const VideoItem = ({ video, onVideoSelect }) => {
     //props contain the info of a particular video
     return (
-        <div className="video-item item">
+        <div onClick={() => onVideoSelect(video)} className="video-item item">
             <img
+                alt="imagen"
                 className="ui image"
                 src={video.snippet.thumbnails.medium.url} />
             <div className="content">
